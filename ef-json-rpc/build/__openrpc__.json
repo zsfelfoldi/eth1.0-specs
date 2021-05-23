@@ -1,0 +1,33 @@
+{
+  "openrpc": "1.0.0",
+  "info": {
+    "title": "Ethereum JSON-RPC Specifcations",
+    "version": "1.0.0",
+    "license": {
+      "name": "Creative Commons Zero 1.0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  },
+  "methods": [
+    {
+      "name": "eth_call",
+      "summary": "Executes a function without creating a transaction or mutating state",
+      "description": "",
+      "params": [
+        {
+          "name": "Address",
+          "required": true,
+          "description": "tst okay",
+          "properties": [{ "name": "test" }],
+          "schema": {
+            "title": "Data",
+            "type": "string",
+            "pattern": "^0x[a-fA-F0-9]+$",
+            "description": "tst"
+          }
+        }
+      ],
+      "result": { "name": "EncryptionKey", "schema": { "type": "string" } }
+    }
+  ]
+}

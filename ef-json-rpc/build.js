@@ -7,7 +7,7 @@ const _parse = async (_schema) => {
     if (!fs.existsSync("./build")){
       fs.mkdirSync("./build");
   }
-    fs.writeFileSync("./build/openrpc.json", JSON.stringify(schema))
+    fs.writeFileSync("./build/__openrpc__.json", JSON.stringify(schema))
   }
   catch(err) {
     console.error(err);

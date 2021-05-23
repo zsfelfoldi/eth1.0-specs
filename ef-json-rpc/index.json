@@ -2,7 +2,11 @@
     "openrpc": "1.0.0",
     "info": {
         "title": "Ethereum JSON-RPC Specifcations",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "license": {
+            "name": "Creative Commons Zero 1.0",
+            "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+        }
     },
     "methods": [
         {
