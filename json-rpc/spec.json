@@ -197,6 +197,101 @@
 			}
 		},
 		{
+			"name": "eth_feeHistory",
+			"summary": "Transaction fee history",
+			"description": "Returns transaction base fee and effective priority fee history for the requested/supported block range.",
+			"params": [
+				{
+					"name": "blockCount",
+					"description": "Number of blocks in the requested range.",
+					"required": true,
+					"schema": {
+						"$ref": "#/components/schemas/Integer"
+					}
+				},
+				{
+					"name": "lastBlock",
+					"description": "Last block number of the requested range.",
+					"required": true,
+					"schema": {
+						"oneOf": [
+							{
+								"$ref": "#/components/schemas/BlockNumber"
+							},
+							{
+								"$ref": "#/components/schemas/BlockNumberTag"
+							}
+						]
+					}
+				},
+				{
+					"name": "rewardPercentiles",
+					"description": "A list of percentile values (0-100) to sample from each block's miner rewards in ascending order, weighted by gas used.",
+					"schema": {
+						"title": "rewardPercentiles",
+						"type": "array",
+						"items": {
+							"type": "number"
+						}
+					}
+				}
+			],
+			"result": {
+				"name": "feeHistoryResult",
+				"description": "Fee history for the returned block range (the intersection of requested and supported range).",
+				"schema": {
+					"title": "feeHistoryResults",
+					"description": "Fee history results.",
+					"type": "object",
+					"required": [
+						"firstBlock",
+						"baseFee",
+						"gasUsedRatio"
+					],
+					"properties": {
+						"firstBlock": {
+							"title": "firstBlock",
+							"description": "First block number of the returned range.",
+							"$ref": "#/components/schemas/BlockNumber"
+						},
+						"baseFee": {
+							"title": "baseFeeArray",
+							"description": "An array of block base fees (including the next block after the returned range).",
+							"type": "array",
+							"items": {
+								"$ref": "#/components/schemas/Integer"
+							}
+						},
+						"gasUsedRatio": {
+							"title": "gasUsedArray",
+							"description": "An array of block gas used ratios.",
+							"type": "array",
+							"items": {
+								"title": "gasUsedRatio",
+								"description": "The ratio of gas used and gas limit.",
+								"type": "number"
+							}
+						},
+						"reward": {
+							"title": "rewardArray",
+							"description": "A two-dimensional array of block miner rewards (effective priority fees) at the requested block percentiles.",
+							"type": "array",
+							"items": {
+								"title": "rewardPercentileArray",
+								"description": "An array of miner reward percentile data points from a single block.",
+								"type": "array",
+								"items": {
+									"title": "rewardPercentile",
+									"description": "A given percentile sample of block miner rewards in ascending order, weighted by gas used.",
+									"type": "number"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		{
 			"name": "eth_getBalance",
 			"summary": "Returns Ether balance of a given or account or contract",
 			"params": [
